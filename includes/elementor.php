@@ -190,6 +190,7 @@ class Elementor {
 				max-width: 90vw !important;
 				width: 90vw !important;
 				bottom: 0;
+				display: block;
 				z-index: 99999;
 				background: #fff;
 				overflow: auto;
@@ -217,7 +218,8 @@ class Elementor {
 				background: rgba(0, 0, 0, .8);
 				opacity: 1;
 			}
-			body[data-elementor-device-mode="mobile"].admin-bar .jet-offcanvas > .jet-offcanvas-trigger-wrap {
+			body[data-elementor-device-mode="mobile"].admin-bar .jet-offcanvas > .jet-offcanvas-trigger-wrap,
+			body[data-elementor-device-mode="mobile"].admin-bar .elementor-element-populated > .jet-offcanvas-trigger-wrap {
 				margin-top: 46px;
 			}
 		</style>
