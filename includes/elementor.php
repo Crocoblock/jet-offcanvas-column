@@ -62,12 +62,8 @@ class Elementor {
 		] ) ) );
 
 		if ( ! $this->initialized ) {
-
-			add_action( 'wp_footer', [ $this, 'js_handler' ] );
-
 			$this->js_handler();
 			$this->initialized = true;
-
 		}
 
 	}
