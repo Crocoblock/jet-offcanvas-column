@@ -63,6 +63,7 @@ class Elementor {
 
 		if ( ! $this->initialized ) {
 			$this->js_handler();
+			add_action( 'wp_footer', [ $this, 'js_handler' ] );
 			$this->initialized = true;
 		}
 
@@ -75,6 +76,7 @@ class Elementor {
 	}
 
 	public function js_handler() {
+
 		?>
 		<script>
 			(function() {
@@ -82,6 +84,12 @@ class Elementor {
 				const offcanavs = document.querySelectorAll( '.jet-offcanvas' );
 
 				offcanavs.forEach( ( offcanv ) => {
+
+					if ( offcanv.dataset.jetOffcanvasInitialized ) {
+						return;
+					}
+
+					offcanv.dataset.jetOffcanvasInitialized = true;
 
 					let parent = offcanv.parentNode;
 					let settings = JSON.parse( offcanv.dataset.jetOffcanvas );
@@ -143,6 +151,7 @@ class Elementor {
 			})()
 		</script>
 		<?php
+
 	}
 
 	public function add_styles() {
