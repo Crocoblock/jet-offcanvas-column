@@ -44,7 +44,7 @@ class Elementor {
 		$offcanvas = ! empty( $data['settings']['jet_offcanvas_enabled'] ) ? $data['settings']['jet_offcanvas_enabled'] : false;
 		$offcanvas = filter_var( $offcanvas, FILTER_VALIDATE_BOOLEAN );
 
-		return $offcanvas;
+		return $offcanvas || $result;
 	}
 
 	public function before_element_render( $element ) {
