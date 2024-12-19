@@ -32,6 +32,19 @@ class Elementor {
 		add_action( 'elementor/frontend/column/before_render', [ $this, 'before_element_render' ] );
 		add_action( 'elementor/frontend/container/before_render', [ $this, 'before_element_render' ] );
 
+		add_filter( 'elementor/element/is_dynamic_content', [ $this, 'maybe_set_element_as_dynamic' ], 10, 2 );
+
+	}
+
+	public function maybe_set_element_as_dynamic( $result, $data ) {
+		if ( empty( $data['settings']['jet_offcanvas_enabled'] ) ) {
+			return $result;
+		}
+
+		$offcanvas = ! empty( $data['settings']['jet_offcanvas_enabled'] ) ? $data['settings']['jet_offcanvas_enabled'] : false;
+		$offcanvas = filter_var( $offcanvas, FILTER_VALIDATE_BOOLEAN );
+
+		return $offcanvas || $result;
 	}
 
 	public function before_element_render( $element ) {
