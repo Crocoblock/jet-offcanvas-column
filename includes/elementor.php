@@ -269,6 +269,32 @@ class Elementor {
 		);
 
 		$element->add_control(
+			'jet_offcanvas_width',
+			[
+				'label' => esc_html__( 'Offcanvas Panel Width in VW', 'jet-offcanvas-column' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'vw' ],
+				'range' => [
+					'vw' => [
+						'min' => 50,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'vw',
+					'size' => 90,
+				],
+				'selectors' => [
+					'body[data-elementor-device-mode="mobile"] .jet-offcanvas.elementor-element-{{ID}}' => 'width: {{SIZE}}{{UNIT}} !important;max-width: {{SIZE}}{{UNIT}} !important;',
+				],
+				'condition'  => array(
+					'jet_offcanvas_enabled' => 'yes',
+					'jet_offcanvas_expand_icon!' => '',
+				),
+			]
+		);
+
+		$element->add_control(
 			'jet_offcanvas_expand_text',
 			array(
 				'type'        => Controls_Manager::TEXT,
